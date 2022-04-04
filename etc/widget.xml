@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="trellis_customergroupwidget" class="Trellis\CustomerGroupWidget\Block\Widget">
+        <label translate="true">Customer Group Restricted Block</label>
+        <description translate="true">Only shows the content to certain customer group(s)</description>
+        <parameters>
+            <parameter name="allowed_customer_group_ids" xsi:type="multiselect" required="true" visible="true" source_model="Trellis\CustomerGroupWidget\Model\Config\Source\Customer\Group">
+                <label translate="true">Customer Groups</label>
+                <description translate="true">Select every customer group that should see the block.</description>
+            </parameter>
+            <parameter name="block_id" xsi:type="select" required="true" visible="true" source_model="Trellis\CustomerGroupWidget\Model\Config\Source\Cms\Block">
+                <label translate="true">CMS Static Block</label>
+                <description translate="true">Select which static block to display.</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
