@@ -8,8 +8,7 @@ Adds a new widget type that can be created to restrict content to selected custo
 Follow the instructions below to install this extension using Composer.
 
 ```
-composer config repositories.trellis/magento-customer-group-widget git git@github.
-com:TrellisCommerce/magento-customer-group-widget
+composer config repositories.trellis/magento-customer-group-widget git git@github.com:TrellisCommerce/magento-customer-group-widget
 composer require trellis/magento-customer-group-widget
 bin/magento module:enable --clear-static-content Trellis_CustomerGroupWidget
 bin/magento setup:upgrade
