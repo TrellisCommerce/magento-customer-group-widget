@@ -1,27 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Trellis\CustomerGroupWidget\Model\Config\Source\Cms;
 
-use Magento\Framework\Option\ArrayInterface;
-use Magento\Cms\Model\ResourceModel\Block\Collection as CmsBlockCollection;
+use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Cms\Model\ResourceModel\Block\CollectionFactory as CmsBlockCollectionFactory;
 
-class Block
-    implements ArrayInterface
+class Block implements OptionSourceInterface
 {
-    protected $_cmsBlockCollectionFactory;
+    /** @var CmsBlockCollectionFactory */
+    protected CmsBlockCollectionFactory $cmsBlockCollectionFactory;
 
+    /**
+     * @param CmsBlockCollectionFactory $cmsBlockCollectionFactory
+     */
     public function __construct(
         CmsBlockCollectionFactory $cmsBlockCollectionFactory
-    )
-    {
-        $this->_cmsBlockCollectionFactory = $cmsBlockCollectionFactory;
+    ) {
+        $this->cmsBlockCollectionFactory = $cmsBlockCollectionFactory;
     }
 
-    public function toOptionArray()
+    /**
+     * @return array
+     */
+    public function toOptionArray(): array
     {
-        /** @var CmsBlockCollection $blocks */
-        $blocks = $this->_cmsBlockCollectionFactory->create();
-        return $blocks->toOptionArray();
+        return $this->cmsBlockCollectionFactory->create()->toOptionArray();
     }
 }

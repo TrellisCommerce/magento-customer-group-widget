@@ -1,27 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Trellis\CustomerGroupWidget\Model\Config\Source\Customer;
 
-use Magento\Framework\Option\ArrayInterface;
-use Magento\Customer\Model\ResourceModel\Group\Collection as CustomerGroupCollection;
+use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
 
-class Group
-    implements ArrayInterface
+class Group implements OptionSourceInterface
 {
-    protected $_customerGroupCollectionFactory;
+    protected CustomerGroupCollectionFactory $_customerGroupCollectionFactory;
 
+    /**
+     * @param CustomerGroupCollectionFactory $customerGroupCollectionFactory
+     */
     public function __construct(
         CustomerGroupCollectionFactory $customerGroupCollectionFactory
-    )
-    {
+    ) {
         $this->_customerGroupCollectionFactory = $customerGroupCollectionFactory;
     }
 
-    public function toOptionArray()
+    /**
+     * @return array
+     */
+    public function toOptionArray(): array
     {
-        /** @var CustomerGroupCollection $groups */
-        $groups = $this->_customerGroupCollectionFactory->create();
-        return $groups->toOptionArray();
+        return $this->_customerGroupCollectionFactory->create()->toOptionArray();
     }
 }
