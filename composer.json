@@ -1,5 +1,5 @@
 {
-    "name": "trellis/magento-customer-group-widget",
+    "name": "trellis/module-customer-group-widget",
     "description": "Adds a new widget type to restrict content to selected customer groups.",
     "require": {
         "php": "~7.3.0||~7.4.0",
